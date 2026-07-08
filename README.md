@@ -7,23 +7,15 @@
 Each problem is stored in its own folder, named by problem number and title. Each folder contains a `.sql` file with the solution and a comment block explaining the approach.
  
 ```
-leetcode/
-├── 0175-combine-two-tables/
-│   └── solution.sql
-├── 0176-second-highest-salary/
-│   └── solution.sql
-├── 0180-consecutive-numbers/
-│   └── solution.sql
-├── 0181-employees-earning-more-than-their-managers/
-│   └── solution.sql
-├── 0182-duplicate-emails/
-│   └── solution.sql
-├── 0183-customers-who-never-order/
-│   └── solution.sql
-├── 0184-department-highest-salary/
-│   └── solution.sql
-├── 0185-department-top-three-salaries/
-│   └── solution.sql
+Problems/
+├── 175_combine_two_tables.sql
+├── 176_second_highest_salary.sql
+├── 180_consecutive_numbers.sql
+├── 181_employees_earning_more_manager.sql
+├── 182_duplicate_emails.sql
+├── 183_customers_who_never_order.sql
+├── 184_department_highest_salary.sql
+├── 185_department_top_three_salaries.sql
 ```
  
 ## Problems
