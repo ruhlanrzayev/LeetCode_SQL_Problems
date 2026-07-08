@@ -4,7 +4,7 @@
 
 ## Structure
  
-Each problem is stored in its own folder, named by problem number and title. Each folder contains a `.sql` file with the solution and a comment block explaining the approach.
+Each problem is a single `.sql` file inside the `Problems` folder, named by problem number and title.
  
 ```
 Problems/
