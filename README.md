@@ -16,6 +16,7 @@ Problems/
 ├── 183_customers_who_never_order.sql
 ├── 184_department_highest_salary.sql
 ├── 185_department_top_three_salaries.sql
+├── 196_delete_duplicate_emails.sql
 ```
  
 ## Problems
@@ -30,6 +31,7 @@ Problems/
 | 183 | [Customers Who Never Order](https://leetcode.com/problems/customers-who-never-order/) | Easy | LEFT JOIN / IS NULL |
 | 184 | [Department Highest Salary](https://leetcode.com/problems/department-highest-salary/) | Medium | Correlated subquery |
 | 185 | [Department Top Three Salaries](https://leetcode.com/problems/department-top-three-salaries/) | Hard | DENSE_RANK() window function |
+| 196 | [Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails/) | Easy | DELETE ... USING (self-join) |
 
 ## Notes
 
