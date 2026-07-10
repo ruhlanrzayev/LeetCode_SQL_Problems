@@ -17,6 +17,13 @@ Problems/
 ├── 184_department_highest_salary.sql
 ├── 185_department_top_three_salaries.sql
 ├── 196_delete_duplicate_emails.sql
+├── 584_find_customer_referee.sql
+├── 595_big_countries.sql
+├── 1148_article_views_I.sql
+├── 1280_students_and_examinations.sql
+├── 1378_replace_employee_id_with_unique.sql
+├── 1683_invalid_tweets.sql
+├── 1757_recyclable_and_low_fat_products.sql
 ```
  
 ## Problems
@@ -32,6 +39,13 @@ Problems/
 | 184 | [Department Highest Salary](https://leetcode.com/problems/department-highest-salary/) | Medium | Correlated subquery |
 | 185 | [Department Top Three Salaries](https://leetcode.com/problems/department-top-three-salaries/) | Hard | DENSE_RANK() window function |
 | 196 | [Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails/) | Easy | DELETE ... USING (self-join) |
+| 584 | [Find Customer Referee](https://leetcode.com/problems/find-customer-referee/) | Easy | IFNULL / COALESCE |
+| 595 | [Big Countries](https://leetcode.com/problems/big-countries/) | Easy | WHERE ... OR |
+| 1148 | [Article Views I](https://leetcode.com/problems/article-views-i/) | Easy | Self-comparison / DISTINCT |
+| 1280 | [Students and Examinations](https://leetcode.com/problems/students-and-examinations/) | Easy | CROSS JOIN + LEFT JOIN |
+| 1378 | [Replace Employee ID With The Unique Identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/) | Easy | LEFT JOIN |
+| 1683 | [Invalid Tweets](https://leetcode.com/problems/invalid-tweets/) | Easy | CHAR_LENGTH() |
+| 1757 | [Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/) | Easy | WHERE ... AND |
 
 ## Notes
 
