@@ -17,12 +17,19 @@ Problems/
 ├── 184_department_highest_salary.sql
 ├── 185_department_top_three_salaries.sql
 ├── 196_delete_duplicate_emails.sql
-├── 570_managers_with_5_direct_reports.sql
+├── 570_managers_with_5_directors.sql
 ├── 584_find_customer_referee.sql
 ├── 595_big_countries.sql
+├── 620_not_boring_movies.sql
+├── 1075_project_employees_I.sql
 ├── 1148_article_views_I.sql
+├── 1174_immediate_food_delivery_II.sql
+├── 1193_monthly_transactions_I.sql
+├── 1211_queries_quality_and_percentage.sql
+├── 1251_average_selling_price.sql
 ├── 1280_students_and_examinations.sql
 ├── 1378_replace_employee_id_with_unique.sql
+├── 1633_percentage_of_users_attended.sql
 ├── 1683_invalid_tweets.sql
 ├── 1757_recyclable_and_low_fat_products.sql
 ├── 1934_confirmation_rate.sql
@@ -44,9 +51,16 @@ Problems/
 | 570 | [Managers with at Least 5 Direct Reports](https://leetcode.com/problems/managers-with-at-least-5-direct-reports/) | Medium | GROUP BY / HAVING |
 | 584 | [Find Customer Referee](https://leetcode.com/problems/find-customer-referee/) | Easy | IFNULL / COALESCE |
 | 595 | [Big Countries](https://leetcode.com/problems/big-countries/) | Easy | WHERE ... OR |
+| 620 | [Not Boring Movies](https://leetcode.com/problems/not-boring-movies/) | Easy | WHERE ... AND / ORDER BY |
+| 1075 | [Project Employees I](https://leetcode.com/problems/project-employees-i/) | Easy | JOIN + AVG + GROUP BY |
 | 1148 | [Article Views I](https://leetcode.com/problems/article-views-i/) | Easy | Self-comparison / DISTINCT |
+| 1174 | [Immediate Food Delivery II](https://leetcode.com/problems/immediate-food-delivery-ii/) | Medium | CASE WHEN + conditional aggregation |
+| 1193 | [Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/) | Medium | TO_CHAR + GROUP BY + conditional aggregation |
+| 1211 | [Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/) | Easy | CASE WHEN + AVG |
+| 1251 | [Average Selling Price](https://leetcode.com/problems/average-selling-price/) | Easy | LEFT JOIN + conditional aggregation |
 | 1280 | [Students and Examinations](https://leetcode.com/problems/students-and-examinations/) | Easy | CROSS JOIN + LEFT JOIN |
 | 1378 | [Replace Employee ID With The Unique Identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/) | Easy | LEFT JOIN |
+| 1633 | [Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/) | Easy | COUNT + subquery percentage |
 | 1683 | [Invalid Tweets](https://leetcode.com/problems/invalid-tweets/) | Easy | CHAR_LENGTH() |
 | 1757 | [Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/) | Easy | WHERE ... AND |
 | 1934 | [Confirmation Rate](https://leetcode.com/problems/confirmation-rate/) | Medium | LEFT JOIN + conditional aggregation |
