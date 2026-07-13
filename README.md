@@ -23,6 +23,7 @@ Problems/
 ├── 595_big_countries.sql
 ├── 596_classes_with_at_least_5_students.sql
 ├── 602_friend_requests_II.sql
+├── 610_triangle_judgement.sql
 ├── 619_biggest_single_number.sql
 ├── 620_not_boring_movies.sql
 ├── 1045_customers_who_bought_all_products.sql
@@ -31,8 +32,10 @@ Problems/
 ├── 1141_user_activity_for_30_days.sql
 ├── 1148_article_views_I.sql
 ├── 1158_market_analysis_I.sql
+├── 1164_product_price_at_given_date.sql
 ├── 1174_immediate_food_delivery_II.sql
 ├── 1193_monthly_transactions_I.sql
+├── 1204_last_person_to_fit_in_bus.sql
 ├── 1211_queries_quality_and_percentage.sql
 ├── 1251_average_selling_price.sql
 ├── 1280_students_and_examinations.sql
@@ -65,6 +68,7 @@ Problems/
 | 595 | [Big Countries](https://leetcode.com/problems/big-countries/) | Easy | WHERE ... OR |
 | 596 | [Classes With at Least 5 Students](https://leetcode.com/problems/classes-more-than-5-students/) | Easy | GROUP BY / HAVING |
 | 602 | [Friend Requests II: Who Has the Most Friends](https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/) | Medium | UNION + GROUP BY |
+| 610 | [Triangle Judgement](https://leetcode.com/problems/triangle-judgement/) | Easy | CASE WHEN (all conditions) |
 | 619 | [Biggest Single Number](https://leetcode.com/problems/biggest-single-number/) | Easy | GROUP BY / HAVING + MAX |
 | 620 | [Not Boring Movies](https://leetcode.com/problems/not-boring-movies/) | Easy | WHERE ... AND / ORDER BY |
 | 1045 | [Customers Who Bought All Products](https://leetcode.com/problems/customers-who-bought-all-products/) | Medium | GROUP BY / HAVING COUNT(DISTINCT) |
@@ -73,8 +77,10 @@ Problems/
 | 1141 | [User Activity for the Past 30 Days I](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/) | Easy | WHERE date range + GROUP BY |
 | 1148 | [Article Views I](https://leetcode.com/problems/article-views-i/) | Easy | Self-comparison / DISTINCT |
 | 1158 | [Market Analysis I](https://leetcode.com/problems/market-analysis-i/) | Medium | LEFT JOIN + conditional aggregation |
+| 1164 | [Product Price at a Given Date](https://leetcode.com/problems/product-price-at-a-given-date/) | Medium | CTE + LEFT JOIN to subquery (MIN diff) + CASE WHEN + COALESCE |
 | 1174 | [Immediate Food Delivery II](https://leetcode.com/problems/immediate-food-delivery-ii/) | Medium | CASE WHEN + conditional aggregation |
 | 1193 | [Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/) | Medium | TO_CHAR + GROUP BY + conditional aggregation |
+| 1204 | [Last Person to Fit in the Bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/) | Medium | Self LEFT JOIN + running SUM (GROUP BY / HAVING) |
 | 1211 | [Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/) | Easy | CASE WHEN + AVG |
 | 1251 | [Average Selling Price](https://leetcode.com/problems/average-selling-price/) | Easy | LEFT JOIN + conditional aggregation |
 | 1280 | [Students and Examinations](https://leetcode.com/problems/students-and-examinations/) | Easy | CROSS JOIN + LEFT JOIN |
