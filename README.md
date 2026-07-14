@@ -17,8 +17,10 @@ Problems/
 ├── 184_department_highest_salary.sql
 ├── 185_department_top_three_salaries.sql
 ├── 196_delete_duplicate_emails.sql
+├── 197_rising_temperature.sql
 ├── 550_game_play_analysis_IV.sql
 ├── 570_managers_with_5_directors.sql
+├── 577_employee_bonus.sql
 ├── 584_find_customer_referee.sql
 ├── 595_big_countries.sql
 ├── 596_classes_with_at_least_5_students.sql
@@ -29,6 +31,7 @@ Problems/
 ├── 1045_customers_who_bought_all_products.sql
 ├── 1070_product_sales_analysis_III.sql
 ├── 1075_project_employees_I.sql
+├── 1084_sales_analysis_III.sql
 ├── 1141_user_activity_for_30_days.sql
 ├── 1148_article_views_I.sql
 ├── 1158_market_analysis_I.sql
@@ -39,6 +42,7 @@ Problems/
 ├── 1211_queries_quality_and_percentage.sql
 ├── 1251_average_selling_price.sql
 ├── 1280_students_and_examinations.sql
+├── 1341_movie_rating.sql
 ├── 1378_replace_employee_id_with_unique.sql
 ├── 1633_percentage_of_users_attended.sql
 ├── 1683_invalid_tweets.sql
@@ -62,8 +66,10 @@ Problems/
 | 184 | [Department Highest Salary](https://leetcode.com/problems/department-highest-salary/) | Medium | Correlated subquery |
 | 185 | [Department Top Three Salaries](https://leetcode.com/problems/department-top-three-salaries/) | Hard | DENSE_RANK() window function |
 | 196 | [Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails/) | Easy | DELETE ... USING (self-join) |
+| 197 | [Rising Temperature](https://leetcode.com/problems/rising-temperature/) | Easy | LAG() window function |
 | 550 | [Game Play Analysis IV](https://leetcode.com/problems/game-play-analysis-iv/) | Medium | LEFT JOIN to subquery (MIN date) + INTERVAL comparison |
 | 570 | [Managers with at Least 5 Direct Reports](https://leetcode.com/problems/managers-with-at-least-5-direct-reports/) | Medium | GROUP BY / HAVING |
+| 577 | [Employee Bonus](https://leetcode.com/problems/employee-bonus/) | Easy | LEFT JOIN + OR / IS NULL |
 | 584 | [Find Customer Referee](https://leetcode.com/problems/find-customer-referee/) | Easy | IFNULL / COALESCE |
 | 595 | [Big Countries](https://leetcode.com/problems/big-countries/) | Easy | WHERE ... OR |
 | 596 | [Classes With at Least 5 Students](https://leetcode.com/problems/classes-more-than-5-students/) | Easy | GROUP BY / HAVING |
@@ -74,6 +80,7 @@ Problems/
 | 1045 | [Customers Who Bought All Products](https://leetcode.com/problems/customers-who-bought-all-products/) | Medium | GROUP BY / HAVING COUNT(DISTINCT) |
 | 1070 | [Product Sales Analysis III](https://leetcode.com/problems/product-sales-analysis-iii/) | Medium | Window function / MIN per group |
 | 1075 | [Project Employees I](https://leetcode.com/problems/project-employees-i/) | Easy | JOIN + AVG + GROUP BY |
+| 1084 | [Sales Analysis III](https://leetcode.com/problems/sales-analysis-iii/) | Easy | EXISTS / NOT EXISTS subqueries |
 | 1141 | [User Activity for the Past 30 Days I](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/) | Easy | WHERE date range + GROUP BY |
 | 1148 | [Article Views I](https://leetcode.com/problems/article-views-i/) | Easy | Self-comparison / DISTINCT |
 | 1158 | [Market Analysis I](https://leetcode.com/problems/market-analysis-i/) | Medium | LEFT JOIN + conditional aggregation |
@@ -84,6 +91,7 @@ Problems/
 | 1211 | [Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/) | Easy | CASE WHEN + AVG |
 | 1251 | [Average Selling Price](https://leetcode.com/problems/average-selling-price/) | Easy | LEFT JOIN + conditional aggregation |
 | 1280 | [Students and Examinations](https://leetcode.com/problems/students-and-examinations/) | Easy | CROSS JOIN + LEFT JOIN |
+| 1341 | [Movie Rating](https://leetcode.com/problems/movie-rating/) | Medium | JOIN + GROUP BY + ROW_NUMBER() + UNION ALL |
 | 1378 | [Replace Employee ID With The Unique Identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/) | Easy | LEFT JOIN |
 | 1633 | [Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/) | Easy | COUNT + subquery percentage |
 | 1683 | [Invalid Tweets](https://leetcode.com/problems/invalid-tweets/) | Easy | CHAR_LENGTH() |
