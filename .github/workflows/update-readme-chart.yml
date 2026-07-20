@@ -5,6 +5,7 @@ on:
     paths:
       - "Problems/**.sql"
       - "scripts/generate_readme_chart.py"
+  workflow_dispatch:
 
 jobs:
   update-chart:
