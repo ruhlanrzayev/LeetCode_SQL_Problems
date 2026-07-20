@@ -6,12 +6,12 @@
 
 ## Technique Breakdown
 
-Primary technique per solution, auto-detected from the query text in `Problems/*.sql` (64 files). Regenerate with `python3 scripts/generate_readme_chart.py` after adding or editing a solution.
+Primary technique per solution, auto-detected from the query text in `Problems/*.sql` (65 files). Regenerate with `python3 scripts/generate_readme_chart.py` after adding or editing a solution.
 
 ```mermaid
 pie showData
-    title Techniques used across 64 solutions
-    "JOIN (LEFT/CROSS/self-join/USING)" : 19
+    title Techniques used across 65 solutions
+    "JOIN (LEFT/CROSS/self-join/USING)" : 20
     "Window functions (RANK/DENSE_RANK/ROW_NUMBER/LAG/LEAD)" : 12
     "GROUP BY / HAVING" : 10
     "Other (COALESCE/IFNULL, UNION, string functions, etc.)" : 8
