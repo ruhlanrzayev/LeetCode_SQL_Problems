@@ -1,0 +1,31 @@
+name: Update README technique chart
+
+on:
+  push:
+    paths:
+      - "Problems/**.sql"
+      - "scripts/generate_readme_chart.py"
+
+jobs:
+  update-chart:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Regenerate technique chart
+        run: python3 scripts/generate_readme_chart.py
+
+      - name: Commit updated README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "chore: auto-update technique breakdown chart"
+          git push
