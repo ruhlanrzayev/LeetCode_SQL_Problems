@@ -55,6 +55,9 @@ RULES = [
 
     ("GROUP BY / HAVING", re.compile(r"\bgroup\s+by\b", re.I)),
 
+    ("Regex / pattern matching (~, SIMILAR TO, REGEXP)",
+     re.compile(r"(~\s*'|~\*|similar\s+to|regexp_like|regexp_matches|regexp_replace)", re.I)),
+
     ("Other (COALESCE/IFNULL, UNION, string functions, etc.)",
      re.compile(r"\b(coalesce|ifnull|union|char_length|to_char|substring|split_part)\b", re.I)),
 ]
