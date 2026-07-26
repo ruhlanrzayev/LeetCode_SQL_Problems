@@ -24,10 +24,13 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PROBLEMS_DIR = REPO_ROOT / "Problems"
 README_PATH = REPO_ROOT / "README.md"
 
-# Markers that wrap the auto-generated block in README.md.
-# Everything between these two lines gets replaced on each run.
-START_MARKER = "<!-- TECHNIQUE_CHART_START -->"
-END_MARKER = "<!-- TECHNIQUE_CHART_END -->"
+# Markers that wrap each auto-generated block in README.md.
+# Everything between a pair of markers gets replaced on each run.
+TECHNIQUE_START = "<!-- TECHNIQUE_CHART_START -->"
+TECHNIQUE_END = "<!-- TECHNIQUE_CHART_END -->"
+
+RANGE_START = "<!-- RANGE_CHART_START -->"
+RANGE_END = "<!-- RANGE_CHART_END -->"
 
 # ---------------------------------------------------------------------------
 # Detection rules, in priority order.
@@ -104,59 +107,110 @@ def collect_counts() -> Counter:
     return counts
 
 
-def render_mermaid_block(counts: Counter) -> str:
-    total = sum(counts.values())
-    lines = [START_MARKER, "", "## Technique Breakdown", ""]
-    lines.append(
-        f"Primary technique per solution, auto-detected from the query text "
-        f"in `Problems/*.sql` ({total} files). Regenerate with "
-        f"`python3 scripts/generate_readme_chart.py` after adding or editing a solution."
-    )
-    lines.append("")
-    lines.append("```mermaid")
-    lines.append("pie showData")
-    lines.append(f"    title Techniques used across {total} solutions")
-    for label, count in counts.most_common():
+# Matches the leading problem number in a filename, e.g. "1084" from
+# "1084_sales_analysis_III.sql". Filenames that don't start with digits
+# are skipped (so a stray non-problem file in Problems/ won't crash this).
+PROBLEM_ID_RE = re.compile(r"^(\d+)_")
+
+
+def bucket_label(problem_id: int) -> str:
+    """Group a problem number into a thousand-wide bucket, e.g. 1084 -> '1000-1999'."""
+    lower = (problem_id // 1000) * 1000
+    upper = lower + 999
+    return f"{lower}-{upper}"
+
+
+def collect_range_counts() -> Counter:
+    """Tally how many solved problems fall into each thousand-wide ID
+    range, purely from filename numbers -- nothing hand-maintained."""
+    counts = Counter()
+    sql_files = sorted(PROBLEMS_DIR.glob("*.sql"))
+    for path in sql_files:
+        match = PROBLEM_ID_RE.match(path.stem)
+        if not match:
+            continue
+        problem_id = int(match.group(1))
+        counts[bucket_label(problem_id)] += 1
+    return counts
+
+
+def render_mermaid_block(start_marker, end_marker, heading, intro, chart_title, items) -> str:
+    """items: iterable of (label, count) pairs, already in the order
+    they should appear in the legend/slices."""
+    total = sum(count for _, count in items)
+    lines = [start_marker, "", heading, "", intro.format(total=total), "", "```mermaid", "pie showData",
+             f"    title {chart_title.format(total=total)}"]
+    for label, count in items:
         lines.append(f'    "{label}" : {count}')
     lines.append("```")
     lines.append("")
-    lines.append(END_MARKER)
+    lines.append(end_marker)
     return "\n".join(lines)
 
 
-def update_readme(new_block: str) -> None:
+def update_block(content: str, start_marker: str, end_marker: str, new_block: str, anchor_heading: str = None) -> str:
+    if start_marker in content and end_marker in content:
+        pattern = re.compile(re.escape(start_marker) + r".*?" + re.escape(end_marker), re.S)
+        return pattern.sub(new_block, content)
+
+    # First run for this block: no markers yet. Insert right before the
+    # given anchor heading if it exists, otherwise append at the end.
+    if anchor_heading and anchor_heading in content:
+        return content.replace(anchor_heading, new_block + "\n\n" + anchor_heading, 1)
+    return content.rstrip() + "\n\n" + new_block + "\n"
+
+
+def main() -> None:
+    technique_counts = collect_counts()
+    range_counts = collect_range_counts()
+
+    technique_block = render_mermaid_block(
+        TECHNIQUE_START, TECHNIQUE_END,
+        heading="## Technique Breakdown",
+        intro=(
+            "Primary technique per solution, auto-detected from the query text in "
+            "`Problems/*.sql` ({total} files). Regenerate with "
+            "`python3 scripts/generate_readme_chart.py` after adding or editing a solution."
+        ),
+        chart_title="Techniques used across {total} solutions",
+        items=technique_counts.most_common(),
+    )
+
+    # Sort by the numeric lower bound of each bucket (e.g. "0-999" before
+    # "1000-1999"), not by count -- this chart is about problem-number
+    # spread, so it should read left-to-right in ID order like the ranges
+    # themselves, not largest-slice-first.
+    sorted_ranges = sorted(range_counts.items(), key=lambda kv: int(kv[0].split("-")[0]))
+    range_block = render_mermaid_block(
+        RANGE_START, RANGE_END,
+        heading="## Problem Number Distribution",
+        intro=(
+            "How many solved problems fall into each LeetCode ID range, auto-detected "
+            "from each file's leading number in `Problems/*.sql` ({total} files)."
+        ),
+        chart_title="Problem ID ranges across {total} solutions",
+        items=sorted_ranges,
+    )
+
     if not README_PATH.exists():
         print(f"error: {README_PATH} not found", file=sys.stderr)
         sys.exit(1)
 
     content = README_PATH.read_text(encoding="utf-8")
-
-    if START_MARKER in content and END_MARKER in content:
-        pattern = re.compile(
-            re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER),
-            re.S,
-        )
-        content = pattern.sub(new_block, content)
-    else:
-        # First run: no markers yet. Insert the block right before
-        # "## Notes" if that section exists, otherwise append at the end.
-        if "## Notes" in content:
-            content = content.replace("## Notes", new_block + "\n\n## Notes", 1)
-        else:
-            content = content.rstrip() + "\n\n" + new_block + "\n"
-
+    content = update_block(content, TECHNIQUE_START, TECHNIQUE_END, technique_block, anchor_heading="## Notes")
+    content = update_block(content, RANGE_START, RANGE_END, range_block, anchor_heading="## Notes")
     README_PATH.write_text(content, encoding="utf-8")
 
-
-def main() -> None:
-    counts = collect_counts()
-    block = render_mermaid_block(counts)
-    update_readme(block)
-
     print("Technique breakdown updated:")
-    total = sum(counts.values())
-    for label, count in counts.most_common():
+    total = sum(technique_counts.values())
+    for label, count in technique_counts.most_common():
         pct = round(count / total * 100)
+        print(f"  {count:>3} ({pct:>3}%)  {label}")
+
+    print("\nProblem ID range breakdown updated:")
+    range_total = sum(range_counts.values())
+    for label, count in sorted_ranges:
+        pct = round(count / range_total * 100)
         print(f"  {count:>3} ({pct:>3}%)  {label}")
 
 
