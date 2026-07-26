@@ -13,11 +13,12 @@ pie showData
     title Techniques used across 80 solutions
     "JOIN (LEFT/CROSS/self-join/USING)" : 20
     "GROUP BY / HAVING" : 15
-    "Other (COALESCE/IFNULL, UNION, string functions, etc.)" : 13
     "Window functions (RANK/DENSE_RANK/ROW_NUMBER/LAG/LEAD)" : 12
+    "Other (COALESCE/IFNULL, UNION, string functions, etc.)" : 10
     "CASE WHEN" : 8
     "Subqueries (EXISTS / correlated)" : 6
     "CTE (WITH ... AS)" : 6
+    "Regex / pattern matching (~, SIMILAR TO, REGEXP)" : 3
 ```
 
 <!-- TECHNIQUE_CHART_END -->
