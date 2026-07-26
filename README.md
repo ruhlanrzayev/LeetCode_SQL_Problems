@@ -23,23 +23,6 @@ pie showData
 
 <!-- TECHNIQUE_CHART_END -->
 
-<!-- RANGE_CHART_START -->
-
-## Problem Number Distribution
-
-How many solved problems fall into each LeetCode ID range, auto-detected from each file's leading number in `Problems/*.sql` (80 files).
-
-```mermaid
-pie showData
-    title Problem ID ranges across 80 solutions
-    "0-999" : 29
-    "1000-1999" : 40
-    "2000-2999" : 1
-    "3000-3999" : 10
-```
-
-<!-- RANGE_CHART_END -->
-
 <!-- ID_LIST_START -->
 
 ## Problems by Technique
