@@ -179,6 +179,23 @@ def update_block(content: str, start_marker: str, end_marker: str, new_block: st
     return content.rstrip() + "\n\n" + new_block + "\n"
 
 
+def remove_block(content: str, start_marker: str, end_marker: str) -> str:
+    """Strips a marker-wrapped block entirely (no replacement) -- used to
+    clean up sections from an older version of this script that are no
+    longer generated, so they don't linger in README.md forever."""
+    if start_marker not in content or end_marker not in content:
+        return content
+    pattern = re.compile(re.escape(start_marker) + r".*?" + re.escape(end_marker) + r"\n*", re.S)
+    return pattern.sub("", content)
+
+
+# Markers used by an earlier version of this script (a problem-ID-range
+# pie chart). That feature was replaced by the per-technique ID list
+# below, so any leftover block under these markers gets removed on run.
+LEGACY_RANGE_START = "<!-- RANGE_CHART_START -->"
+LEGACY_RANGE_END = "<!-- RANGE_CHART_END -->"
+
+
 def main() -> None:
     technique_counts, ids_by_label = collect_counts_and_ids()
     technique_order = [label for label, _ in technique_counts.most_common()]
@@ -202,6 +219,7 @@ def main() -> None:
         sys.exit(1)
 
     content = README_PATH.read_text(encoding="utf-8")
+    content = remove_block(content, LEGACY_RANGE_START, LEGACY_RANGE_END)
     content = update_block(content, TECHNIQUE_START, TECHNIQUE_END, technique_block, anchor_heading="## Notes")
     content = update_block(content, ID_LIST_START, ID_LIST_END, id_list_block, anchor_heading="## Notes")
     README_PATH.write_text(content, encoding="utf-8")
