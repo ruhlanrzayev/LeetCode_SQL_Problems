@@ -23,6 +23,23 @@ pie showData
 
 <!-- TECHNIQUE_CHART_END -->
 
+<!-- RANGE_CHART_START -->
+
+## Problem Number Distribution
+
+How many solved problems fall into each LeetCode ID range, auto-detected from each file's leading number in `Problems/*.sql` (80 files).
+
+```mermaid
+pie showData
+    title Problem ID ranges across 80 solutions
+    "0-999" : 29
+    "1000-1999" : 40
+    "2000-2999" : 1
+    "3000-3999" : 10
+```
+
+<!-- RANGE_CHART_END -->
+
 ## Notes
  
 - Queries target PostgreSQL syntax by default (LeetCode's PostgreSQL option); a few (e.g. 1683 Invalid Tweets, 1934 Confirmation Rate) use MySQL where noted, since certain functions (`CHAR_LENGTH`, `IFNULL`, `IF()`) differ between dialects.
